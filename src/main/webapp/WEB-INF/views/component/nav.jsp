@@ -18,8 +18,15 @@
             <a href="/">회원목록</a>
         </li>
         <li class="login-name">
-            <a href="/mypage" style="color: black;">${sessionScope.name}님 환영합니다</a>
-            <a href="/logout">logout</a>
+            <c:choose>
+                <c:when test="${sessionScope.loginEmail != null}">
+                    <a href="/mypage" style="color: black;">${sessionScope.loginEmail} 님 환영해요!</a>
+                    <a href="/logout">logout</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/login">login</a>
+                </c:otherwise>
+            </c:choose>
         </li>
     </ul>
 </div>

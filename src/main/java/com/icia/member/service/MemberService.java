@@ -13,4 +13,29 @@ public class MemberService {
     public int save(MemberDTO memberDTO) {
         return memberRepository.save(memberDTO);
     }
+
+    public boolean login(MemberDTO memberDTO) {
+        MemberDTO dto = memberRepository.login(memberDTO);
+        if (dto != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
