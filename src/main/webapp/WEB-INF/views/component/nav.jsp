@@ -17,10 +17,6 @@
         <li>
             <a href="/">회원목록</a>
         </li>
-        <li>
-            <a href="/">홈으로</a>
-        </li>
-
         <li class="login-name">
             <a href="/mypage" style="color: black;">${sessionScope.name}님 환영합니다</a>
             <a href="/logout">logout</a>
