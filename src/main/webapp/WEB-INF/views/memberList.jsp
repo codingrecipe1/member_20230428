@@ -27,6 +27,8 @@
             <th>name</th>
             <th>birth</th>
             <th>mobile</th>
+            <th>조회</th>
+            <th>삭제</th>
         </tr>
         <c:forEach items="${memberList}" var="member">
             <tr>
@@ -35,6 +37,12 @@
                 <td>${member.memberName}</td>
                 <td>${member.memberBirth}</td>
                 <td>${member.memberMobile}</td>
+                <td>
+                    <button onclick="member_detail('${member.id}')">조회</button>
+                </td>
+                <td>
+                    <button onclick="member_delete('${member.id}')">삭제</button>
+                </td>
             </tr>
         </c:forEach>
     </table>
@@ -42,4 +50,12 @@
 
 <%@include file="./component/footer.jsp" %>
 </body>
+<script>
+    const member_detail = (id) => {
+        location.href = "/member?id=" + id;
+    }
+    const member_delete = (id) => {
+        location.href = "/delete?id=" + id;
+    }
+</script>
 </html>

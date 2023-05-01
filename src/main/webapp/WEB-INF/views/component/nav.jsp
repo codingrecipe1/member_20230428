@@ -15,7 +15,7 @@
             <a href="/login">로그인</a>
         </li>
         <li>
-            <a href="/list">회원목록</a>
+            <a href="/members">회원목록</a>
         </li>
         <li class="login-name" id="login-area">
 
