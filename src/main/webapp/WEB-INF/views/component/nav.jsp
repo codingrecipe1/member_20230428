@@ -12,21 +12,26 @@
             <a href="/save">회원가입</a>
         </li>
         <li>
-            <a href="/list">로그인</a>
+            <a href="/login">로그인</a>
         </li>
         <li>
-            <a href="/">회원목록</a>
+            <a href="/list">회원목록</a>
         </li>
-        <li class="login-name">
-            <c:choose>
-                <c:when test="${sessionScope.loginEmail != null}">
-                    <a href="/mypage" style="color: black;">${sessionScope.loginEmail} 님 환영해요!</a>
-                    <a href="/logout">logout</a>
-                </c:when>
-                <c:otherwise>
-                    <a href="/login">login</a>
-                </c:otherwise>
-            </c:choose>
+        <li class="login-name" id="login-area">
+
         </li>
     </ul>
 </div>
+
+<script>
+    const loginArea = document.getElementById("login-area");
+    const loginEmail = '${sessionScope.loginEmail}';
+    console.log(loginEmail.length);
+
+    if (loginEmail.length != 0) {
+        loginArea.innerHTML = "<a href='/mypage' style='color: black;'>"+loginEmail +"님 환영해요!</a>"+
+                                "<a href='/logout'>logout</a>";
+    } else {
+        loginArea.innerHTML = "<a href='/login'>login</a>";
+    }
+</script>
