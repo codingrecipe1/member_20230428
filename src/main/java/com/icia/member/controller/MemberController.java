@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -61,8 +62,15 @@ public class MemberController {
         // 세션에 담긴 값 전체 삭제
         session.invalidate();
         // 특정 파라미터만 삭제
-        session.removeAttribute("loginEmail");
+//        session.removeAttribute("loginEmail");
         return "redirect:/";
+    }
+
+    @GetMapping("/list")
+    public String findAll(Model model) {
+        List<MemberDTO> memberDTOList = memberService.findAll();
+        model.addAttribute("memberList", memberDTOList);
+        return "memberList";
     }
 }
 
