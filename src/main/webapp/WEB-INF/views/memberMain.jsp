@@ -14,13 +14,15 @@
 
 </head>
 <body>
-<%@include file="./component/header.jsp"%>
-<%@include file="./component/nav.jsp"%>
+<%@include file="./component/header.jsp" %>
+<%@include file="./component/nav.jsp" %>
 
 <div id="section">
     ${sessionScope.loginEmail} 님 환영해요!
-    <button>로그아웃</button>
+
     <button onclick="fun1()">세션값 js에서 확인</button>
+    <button onclick="update()">회원정보수정</button>
+
 
     <%-- 수정요청은 memberMain.jsp에서 시작
          컨트롤러에서 세션값 가져올 때: session.getAttribute("loginEmail")
@@ -30,9 +32,12 @@
            --%>
 </div>
 
-<%@include file="./component/footer.jsp"%>
+<%@include file="./component/footer.jsp" %>
 </body>
 <script>
+    const update = () => {
+        location.href = "/update";
+    }
     const fun1 = () => {
         const loginEmail = '${sessionScope.loginEmail}';
         console.log("로그인이메일: ", loginEmail);
