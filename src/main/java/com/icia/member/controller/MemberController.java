@@ -3,6 +3,8 @@ package com.icia.member.controller;
 import com.icia.member.dto.MemberDTO;
 import com.icia.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -99,6 +101,17 @@ public class MemberController {
     public String update(@ModelAttribute MemberDTO memberDTO) {
         memberService.update(memberDTO);
         return "redirect:/";
+    }
+
+    @PostMapping("/email-check")
+    public ResponseEntity emailCheck(@RequestParam("memberEmail") String memberEmail) {
+        System.out.println("memberEmail = " + memberEmail);
+        MemberDTO memberDTO = memberService.findByMemberEmail(memberEmail);
+        if (memberDTO == null) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
     }
 }
 
